@@ -79,44 +79,21 @@ jest --init
 
 ### Using Babel
 
-To use [Babel](http://babeljs.io/), install the `babel-jest` and `regenerator-runtime` packages:
+To use [Babel](http://babeljs.io/), install the `babel-jest` and `@babel/core` packages:
 
 ```bash
-yarn add --dev babel-jest babel-core regenerator-runtime
+yarn add --dev babel-jest @babel/core
 ```
 
-> Note: If you are using a babel version 7 then you need to install `babel-jest` with the following command:
->
-> ```bash
-> yarn add --dev babel-jest 'babel-core@^7.0.0-0' @babel/core regenerator-runtime
-> ```
+Don't forget to add a [`babel.config.js`](https://babeljs.io/docs/en/config-files) file in your project's root folder. For example, if you are using ES6 and [React.js](https://facebook.github.io/react/) with the [`@babel/preset-env`](https://babeljs.io/docs/en/babel-preset-env) and [`@babel/preset-react`](https://babeljs.io/docs/en/babel-preset-react) presets:
 
-_Note: Explicitly installing `regenerator-runtime` is not needed if you use `npm` 3 or 4 or Yarn_
-
-Don't forget to add a [`.babelrc`](https://babeljs.io/docs/usage/babelrc/) file in your project's root folder. For example, if you are using ES6 and [React.js](https://facebook.github.io/react/) with the [`babel-preset-env`](https://babeljs.io/docs/plugins/preset-env/) and [`babel-preset-react`](https://babeljs.io/docs/plugins/preset-react/) presets:
-
-```json
-{
-  "presets": ["env", "react"]
-}
+```js
+module.exports = {
+  presets: ['@babel/preset-env', '@babel/preset-react'],
+};
 ```
 
 You are now set up to use all ES6 features and React specific syntax.
-
-> Note: If you are using a more complicated Babel configuration, using Babel's `env` option, keep in mind that Jest will automatically define `NODE_ENV` as `test`. It will not use `development` section like Babel does by default when no `NODE_ENV` is set.
-
-> Note: If you've turned off transpilation of ES6 modules with the option `{ "modules": false }`, you have to make sure to turn this on in your test environment.
-
-```json
-{
-  "presets": [["env", {"modules": false}], "react"],
-  "env": {
-    "test": {
-      "presets": [["env"], "react"]
-    }
-  }
-}
-```
 
 > Note: `babel-jest` is automatically installed when installing Jest and will automatically transform files if a babel configuration exists in your project. To avoid this behavior, you can explicitly reset the `transform` configuration option:
 
