@@ -21,7 +21,7 @@ const babelEs5Options = Object.assign(
   {
     babelrc: false,
     exclude: 'node_modules/!(ansi-styles|chalk|ansi-regex)/**',
-    plugins: [],
+    plugins: ['@babel/plugin-transform-runtime'],
     presets: [
       [
         '@babel/preset-env',
@@ -33,7 +33,7 @@ const babelEs5Options = Object.assign(
         },
       ],
     ],
-    // runtimeHelpers: true,
+    runtimeHelpers: true,
   }
 );
 
