@@ -1,6 +1,7 @@
 {
   "private": true,
   "version": "23.2.0",
+  "name": "jest",
   "devDependencies": {
     "@babel/core": "^7.0.0",
     "@babel/preset-env": "^7.0.0",
